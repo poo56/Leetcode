@@ -1,0 +1,10 @@
+nums = [2,7,11,15]
+target = 9
+
+hashmap = {}
+for i in range(len(nums)):
+    to_find_num = target - nums[i]
+    if to_find_num in hashmap:
+        print(i,hashmap[to_find_num])
+    else:
+        hashmap[nums[i]] = i
