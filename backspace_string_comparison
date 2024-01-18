@@ -1,0 +1,14 @@
+def build(s):
+    ans = []
+    for i in s:
+        if i != '#':
+            ans.append(i)
+        elif ans:
+            ans.pop()
+    return "".join(ans)
+
+# Compare the processed strings of s and t
+return build(s) == build(t)
+
+Time complexity: O(M+N) where M, N are the lengths of S and T respectively
+Space Complexity: O(M+N) 
