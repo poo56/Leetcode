@@ -1,0 +1,40 @@
+class Solution:
+    def backspaceCompare(self, s: str, t: str) -> bool:
+        index1 = len(s) - 1
+        index2 = len(t) - 1
+
+        skip1 = 0
+        skip2 = 0
+        while index1>=0 or index2 >=0:
+            while index1>=0:
+                if s[index1] == "#":
+                    skip1 +=1
+                    index1 -=1
+                elif skip1 > 0:
+                    skip1 -=1
+                    index1 -=1
+                else:
+                    break
+
+            while index2>=0:
+                if t[index2] == "#":
+                    skip2 +=1
+                    index2 -=1
+                elif skip2 > 0:
+                    skip2 -=1
+                    index2 -=1
+                else:
+                    break
+
+            if index1 >=0 and index2 >= 0:
+                if s[index1] != t[index2]:
+                    return False
+            elif index1 >=0 or index2 >=0:
+                return False
+
+            index1 -=1
+            index2 -=1
+        return True
+
+#Time complexity: O(M+N) where M is the length of string s and N is the length of string t
+#Space complexity: O(1) as there is no usage of data structure to store the results
