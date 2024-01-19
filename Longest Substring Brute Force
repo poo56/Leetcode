@@ -1,0 +1,20 @@
+# Longest Substring Without Repeating Characters
+
+//Time Complexity: O(N^2)
+//Space Complexity: O(N)
+
+s= "bbb"
+
+if len(s) <= 1:
+    return len(s)
+
+longest = 0
+for i in range(len(s)):
+    set = {}
+    for j in range(i,len(s)):
+        if s[j] in set:
+            longest = max(longest, j-i)
+            break
+        set[s[j]] = 1
+
+return longest
