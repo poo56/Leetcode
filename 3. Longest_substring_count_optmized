@@ -1,0 +1,16 @@
+#Using Sliding window
+#Time Complexity - O(N)
+#Space Complexity - O(N)
+
+s ="pwwkew"
+longest = 0
+sub =''
+count = 0
+for i in s:
+    if i not in sub:
+        sub += i
+        longest = max(longest, len(sub))
+    else:
+        cut = sub.index(i)
+        sub = sub[cut+1:]+i
+print(longest)
