@@ -10,7 +10,7 @@ if len(s) <= 1:
 
 longest = 0
 for i in range(len(s)):
-    set = {}
+    set = {} // Using HashMap to store the values of s
     for j in range(i,len(s)):
         if s[j] in set:
             longest = max(longest, j-i)
