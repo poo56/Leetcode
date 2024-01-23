@@ -1,0 +1,77 @@
+//Time Complexity:- O(n)
+//Space Complexity:- O(1) since we simply adjust some pointers in the original linked list and only use O(1) additional memory for achieving the final result.
+class Node:
+
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+# Function used to reverse a linked list
+# from position m to n
+def reverseBetween(head, m, n):
+    pos = 1
+    start = head
+    currentNode = head
+
+    while(pos < m):
+        start = currentNode
+        currentNode = currentNode.next
+        pos +=1
+
+
+
+    tail = currentNode
+    newList = None
+
+    while(pos >=m and pos <=n):
+        next = currentNode.next
+
+        currentNode.next = newList
+
+        newList = currentNode
+        currentNode = next
+        pos += 1
+
+
+    start.next = newList
+    tail.next = currentNode
+
+    if (m>1):
+        return head
+    else:
+        return newList
+
+
+
+def prints(head):
+    while (head != None):
+        print(head.data, end=' ')
+        head = head.next
+
+    print()
+
+
+# Function to add a new node at the
+# beginning of the list
+def push(head_ref, new_data):
+    new_node = Node(new_data)
+    new_node.data = new_data
+    new_node.next = (head_ref)
+    (head_ref) = new_node
+    return head_ref
+
+
+# Driver code
+if __name__ == '__main__':
+    head = None
+    head = push(head, 70)
+    head = push(head, 60)
+    head = push(head, 50)
+    head = push(head, 40)
+    head = push(head, 30)
+    head = push(head, 20)
+    head = push(head, 10)
+
+    reverseBetween(head, 3, 6)
+
+    prints(head)
