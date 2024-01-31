@@ -1,0 +1,39 @@
+//Time Complexity:O(N)
+//Space Complexity:O(N)
+
+
+class ListNode:
+    def __init__(self, value):
+        self.val = value
+        self.next = None
+
+def cycleDetection(head):
+
+    currentNode = head
+    seenNode = set()
+
+    while currentNode:
+        if currentNode in seenNode:
+            return currentNode
+
+        seenNode.add(currentNode)
+        currentNode = currentNode.next
+
+    # Example usage:
+    # Create a linked list with a cycle
+head = ListNode(3)
+node1 = ListNode(2)
+node2 = ListNode(0)
+node3 = ListNode(-4)
+
+head.next = node1
+node1.next = node2
+node2.next = node3
+node3.next = node1  # creating a cycle
+
+result = cycleDetection(head)
+
+if result:
+    print("Cycle detected. Starting node of the cycle is at value:", result.val)
+else:
+    print("No cycle detected.")
