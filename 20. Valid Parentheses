@@ -1,0 +1,17 @@
+#Time complexity - O(N)
+#space Complexity - O(N)
+stack = [] 
+openToClose = {'}': '{', ')' : '(', ']' :'['}
+
+def isValid(s):
+  for c in s:
+    if c in openToClose: 
+      # chekcing the keys
+      if stack and stack[-1] == openToClose[c]:
+          stack.pop()
+      else:
+          return False
+    else:
+        stack.append(c)
+
+    return True if not stack else False
