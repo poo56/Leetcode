@@ -1,0 +1,18 @@
+s = "))(("
+lst = []
+lst[:] = s #Splitting the string using the list slicing
+stack = []
+
+for i in range(len(lst)):
+    if lst[i] == "(":
+        stack.append(i)
+    elif lst[i] == ")" and stack:
+        stack.pop()
+    elif lst[i] == ")":
+        lst[i] = ""
+
+while(stack): #if stack is not empty
+    lstIndx = stack.pop()
+    lst[lstIndx] = ""
+
+print(''.join(lst))
