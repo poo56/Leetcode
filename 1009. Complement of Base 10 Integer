@@ -1,0 +1,12 @@
+class Solution:
+    def bitwiseComplement(self, n: int) -> int:
+
+        if n == 0:
+            return 1
+
+        in_bits = n.bit_length()
+
+        #Create bitmask
+        all_bit_set = (1 << in_bits) - 1
+
+        return ( n ^ all_bit_set )
