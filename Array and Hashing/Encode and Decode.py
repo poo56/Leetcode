@@ -2,7 +2,7 @@ def encode(strs):
     res = ""
     for s in strs:
         res += str(len(s)) + "#" + s
-        return res
+    return res
 
 
 def decode(s:str):
