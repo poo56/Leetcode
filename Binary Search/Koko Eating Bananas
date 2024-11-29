@@ -29,7 +29,6 @@ def banana():
     low = 1
     high = max(piles)
     res = 0
-    r = 0
 
     while low <= high:
         mid = (low+high)//2
