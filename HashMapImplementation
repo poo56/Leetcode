@@ -1,0 +1,78 @@
+#Using LinkedList
+
+class MyHashMap:
+
+    def __init__(self):
+        self.keyRange = 769
+        self.bucketArray = [Bucket() for i in range(self.keyRange)]
+
+    def _hash(self,key):
+        return key % self.keyRange
+        
+
+    
+    def put(self, key: int, value: int) -> None:
+        bucketIndex = self._hash(key)
+        self.bucketArray[bucketIndex].update(key,value)
+
+        
+
+    def get(self, key: int) -> int:
+        bucketIndex = self._hash(key)
+        return self.bucketArray[bucketIndex].get(key)
+        
+
+    def remove(self, key: int) -> None:
+        bucketIndex = self._hash(key)
+        self.bucketArray[bucketIndex].remove(key)
+
+#Implementing the Bucket Data Structure
+
+#Initializing an empty node
+class Node:
+    def __init__(self, key, value, nextNode = None):
+        self.key = key
+        self.value = value
+        self.next = nextNode
+
+class Bucket:
+    def __init__(self):
+        self.head = Node(0,0)
+
+    def get(self,key):
+        curr = self.head
+        while curr.next is not None:
+            if curr.next.key == key:
+                return curr.next.value
+            curr = curr.next
+        return -1
+
+    def update(self, key, value):
+        curr = self.head
+        while curr.next is not None:
+            if curr.next.key == key:
+                curr.next.value = value
+                return
+            curr = curr.next
+
+        new_node = Node(key, value)
+        curr.next = new_node
+
+
+    def remove(self, key):
+        curr = self.head
+        while curr.next is not None:
+            if curr.next.key == key:
+                curr.next = curr.next.next
+                return
+            curr = curr.next
+
+
+        
+
+
+# Your MyHashMap object will be instantiated and called as such:
+# obj = MyHashMap()
+# obj.put(key,value)
+# param_2 = obj.get(key)
+# obj.remove(key)
