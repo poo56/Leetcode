@@ -65,6 +65,8 @@ class MyLinkedList():
         if cur and cur!= self.right and index==0:
             next = cur.next
             prev = cur.prev
+            next.prev = prev
+            prev.next = next
 
 
 
