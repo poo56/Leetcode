@@ -29,7 +29,7 @@ class Stack:
 
         popped_node = self.top
         self.top = self.top.next
-        #popped_node.next = None
+        popped_node.next = None #This is used to remove the unwanted reference to the popped element
         return popped_node.data
 
     def display(self):
