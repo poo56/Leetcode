@@ -26,7 +26,7 @@ class Stack:
 
     def display(self):
 
-        """Display teh elements in the stack"""
+        """Display the elements in the stack"""
 
         if self.is_empty():
             return "Stack is empty"
