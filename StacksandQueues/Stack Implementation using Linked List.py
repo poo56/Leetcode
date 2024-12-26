@@ -5,6 +5,7 @@ class Node:
 
 class Stack:
     def __init__(self):
+        """Initializing the head"""
         self.top = None
 
     def is_empty(self):
